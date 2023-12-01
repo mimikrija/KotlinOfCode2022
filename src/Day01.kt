@@ -1,17 +1,25 @@
 fun main() {
     fun part1(input: List<String>): Int {
-        return input.size
+        var solution = 0
+        val pattern = "\\d".toRegex()
+        for (line in input){
+            val numbers = pattern.findAll(line)
+            val first = numbers.first().value
+            val last = numbers.last().value
+            val numbersString = "$first$last"
+            solution += numbersString.toInt()
+
+        }
+        println("Part 1 solution is $solution")
+        return solution
     }
 
     fun part2(input: List<String>): Int {
         return input.size
     }
 
-    // test if implementation meets criteria from the description, like:
-    val testInput = readInput("Day01_test")
-    check(part1(testInput) == 1)
 
     val input = readInput("Day01")
-    part1(input).println()
-    part2(input).println()
+    check(part1(input) == 53386)
+
 }
